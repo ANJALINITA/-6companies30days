@@ -1,0 +1,22 @@
+lass Solution {
+public:
+void solve(int k ,int n, vector<vector<int>>&output,vector<int>&temans,int index){
+    if(k==0 && n==0){
+        output.push_back(temans);
+        return;
+    }
+    for(int num=index;num<10;num++){
+        temans.push_back(num);
+        solve(k-1,n-num,output,temans,num+1);
+        temans.pop_back();
+    }
+}
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>>output;
+      
+        vector<int>temans;
+        solve(k,n,output,temans,1);
+        return output;
+    }
+};
+ 
